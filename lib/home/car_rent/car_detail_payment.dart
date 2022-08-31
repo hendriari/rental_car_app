@@ -283,16 +283,16 @@ class _CarDetailPaymentState extends State<CarDetailPayment> {
                             ],
                           ),
                         ),
-                        const Spacer(),
-                        Container(
-                          height: 145,
-                          width: sizeWidth * 0.44,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Image.asset(
-                            _model.addItem![index].itemMobil.image,
-                            fit: BoxFit.fill,
+                        Flexible(
+                          fit: FlexFit.tight,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Image.asset(
+                              _model.addItem![index].itemMobil.image,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         )
                       ],

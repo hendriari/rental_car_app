@@ -3,30 +3,20 @@ import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:rent_app/home/home_page.dart';
 
-class PaymentSucces extends StatefulWidget {
-  const PaymentSucces({Key? key}) : super(key: key);
+class PaymentSuccess extends StatelessWidget {
+  const PaymentSuccess({Key? key}) : super(key: key);
 
   @override
-  State<PaymentSucces> createState() => _PaymentSuccesState();
-}
+  Widget build(BuildContext context) {
+    late double sizeHeight = MediaQuery.of(context).size.height;
 
-class _PaymentSuccesState extends State<PaymentSucces> {
-  late double sizeHeight = MediaQuery.of(context).size.height;
-  late double sizeWidth = MediaQuery.of(context).size.width;
-
-  @override
-  void initState() {
     Timer(const Duration(milliseconds: 2500), () {
       //push and delete the preveious route
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const HomePage()),
           (Route<dynamic> route) => false);
     });
-    super.initState();
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
       children: [
