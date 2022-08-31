@@ -27,7 +27,6 @@ class _BusCatalogState extends State<BusCatalog> {
   late SingletonModel _modelBus;
   late double sizeHeight = MediaQuery.of(context).size.height;
   late double sizeWidth = MediaQuery.of(context).size.width;
-  PageController pageController = PageController();
   String? _start;
   String? _end;
   String? _location;
@@ -42,12 +41,6 @@ class _BusCatalogState extends State<BusCatalog> {
     _destination = widget.destination;
     _modelBus = SingletonModel.withContext(context);
     _modelBus.addItemBus = [];
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    pageController.dispose();
   }
 
   @override
@@ -71,89 +64,146 @@ class _BusCatalogState extends State<BusCatalog> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 135,
-            width: sizeWidth,
-            decoration: const BoxDecoration(
-              color: Colors.amber,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(70),
+            height: sizeHeight * 0.07,
+            color: Colors.amber,
+          ),
+          Stack(
+            children: [
+              Container(
+                height: 170,
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 50, 10, 0),
-                    child: SizedBox(
-                      height: 80,
-                      width: sizeWidth,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 3, 0, 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                InkResponse(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Container(
-                                    height: 25,
-                                    width: 25,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.black),
-                                    child: const Icon(
-                                      Icons.arrow_back_ios_new,
-                                      size: 18,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                const Spacer(),
-                                const Padding(
-                                  padding: EdgeInsets.only(right: 45.0),
-                                  child: Text(
-                                    'Rental Catalog',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                const Spacer(),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                const Icon(Icons.calendar_month_outlined),
-                                const SizedBox(width: 10),
-                                Text(
-                                  'On $_start - $_end',
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(right: 20.0),
-                              child: Divider(
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
+              Container(
+                height: 40,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(70),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkResponse(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 25,
+                          width: 25,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.black),
+                          child: const Icon(
+                            Icons.arrow_back_ios_new,
+                            size: 18,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
+                      const Spacer(),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 45.0),
+                        child: Text(
+                          'Bus Catalog',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w900, fontSize: 18),
+                        ),
+                      ),
+                      const Spacer(),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 30,
+                left: 10,
+                right: 10,
+                child: Container(
+                  height: 130,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black54,
+                        offset: Offset(1, 3),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        Flexible(
+                          fit: FlexFit.tight,
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.grey),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 5, 10, 2),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Start Date',
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 12),
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.calendar_month_outlined),
+                                      Text('$_start')
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Flexible(
+                          fit: FlexFit.tight,
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.grey),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 5, 10, 2),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'End Date',
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 12),
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.calendar_month_outlined),
+                                      Text('$_end')
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
