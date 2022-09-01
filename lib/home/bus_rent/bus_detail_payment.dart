@@ -638,13 +638,13 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
                   'Overview',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
-                Row(
+                Column(
                   children: [
                     Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
                           height: 60,
-                          width: sizeWidth * 0.45,
+                          width: double.infinity,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(20),
@@ -664,12 +664,11 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
                             ),
                           ),
                         )),
-                    const Spacer(),
                     Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
                           height: 60,
-                          width: sizeWidth * 0.45,
+                          width: double.infinity,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(20),
@@ -694,10 +693,10 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
+                Column(
                   children: [
                     Container(
-                      width: sizeWidth * 0.45,
+                      width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20),
@@ -725,10 +724,12 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       height: 60,
-                      width: sizeWidth * 0.45,
+                      width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20),
@@ -761,11 +762,11 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
+                Column(
                   children: [
                     Container(
                       height: 60,
-                      width: sizeWidth * 0.45,
+                      width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20),
@@ -793,10 +794,12 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       height: 60,
-                      width: sizeWidth * 0.45,
+                      width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20),
@@ -906,7 +909,6 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
       builder: (context) {
         return SingleChildScrollView(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(
                 width: 50,
@@ -917,6 +919,7 @@ class _BusDetailPaymentState extends State<BusDetailPayment> {
               ),
               ListView.builder(
                 shrinkWrap: true,
+                physics: const ScrollPhysics(),
                 itemBuilder: (context, index) {
                   final Payment payment = paymentMetode[index];
                   return Padding(

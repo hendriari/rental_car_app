@@ -644,13 +644,13 @@ class _CarDetailPaymentState extends State<CarDetailPayment> {
                   'Overview',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
-                Row(
+                Column(
                   children: [
                     Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
                           height: 60,
-                          width: sizeWidth * 0.45,
+                          width: double.infinity,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(20),
@@ -670,12 +670,11 @@ class _CarDetailPaymentState extends State<CarDetailPayment> {
                             ),
                           ),
                         )),
-                    const Spacer(),
                     Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
                           height: 60,
-                          width: sizeWidth * 0.45,
+                          width: double.infinity,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(20),
@@ -700,10 +699,10 @@ class _CarDetailPaymentState extends State<CarDetailPayment> {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
+                Column(
                   children: [
                     Container(
-                      width: sizeWidth * 0.45,
+                      width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20),
@@ -731,10 +730,12 @@ class _CarDetailPaymentState extends State<CarDetailPayment> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       height: 60,
-                      width: sizeWidth * 0.45,
+                      width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20),
@@ -877,7 +878,6 @@ class _CarDetailPaymentState extends State<CarDetailPayment> {
       builder: (context) {
         return SingleChildScrollView(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(
                 width: 50,
@@ -888,6 +888,7 @@ class _CarDetailPaymentState extends State<CarDetailPayment> {
               ),
               ListView.builder(
                 shrinkWrap: true,
+                physics: const ScrollPhysics(),
                 itemBuilder: (context, index) {
                   final Payment payment = paymentMetode[index];
                   return Padding(

@@ -11,7 +11,7 @@ class RentPage extends StatefulWidget {
   State<RentPage> createState() => _RentPageState();
 }
 
-class _RentPageState extends State<RentPage>{
+class _RentPageState extends State<RentPage> {
   late TextEditingController _textController;
   late TextEditingController _drivertextController;
   late GlobalKey<FormState> _key;
@@ -196,6 +196,9 @@ class _RentPageState extends State<RentPage>{
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),
@@ -375,7 +378,7 @@ class _RentPageState extends State<RentPage>{
         context: context,
         builder: (context) {
           return Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             children: [
               const SizedBox(
                 width: 50,
@@ -384,19 +387,22 @@ class _RentPageState extends State<RentPage>{
                   thickness: 2,
                 ),
               ),
-              SfDateRangePicker(
-                selectionTextStyle: const TextStyle(fontFamily: 'Ubuntu'),
-                rangeTextStyle:
-                    const TextStyle(fontFamily: 'Ubuntu', color: Colors.green),
-                todayHighlightColor: Colors.amber,
-                startRangeSelectionColor: Colors.amber,
-                endRangeSelectionColor: Colors.amber,
-                rangeSelectionColor: Colors.amber.withOpacity(0.2),
-                onSelectionChanged: _onSelectionChanged,
-                selectionMode: DateRangePickerSelectionMode.range,
-                initialSelectedRange: PickerDateRange(
-                    DateTime.now().subtract(const Duration(days: 0)),
-                    DateTime.now().add(const Duration(days: 0))),
+              Flexible(
+                fit: FlexFit.tight,
+                child: SfDateRangePicker(
+                  selectionTextStyle: const TextStyle(fontFamily: 'Ubuntu'),
+                  rangeTextStyle: const TextStyle(
+                      fontFamily: 'Ubuntu', color: Colors.green),
+                  todayHighlightColor: Colors.amber,
+                  startRangeSelectionColor: Colors.amber,
+                  endRangeSelectionColor: Colors.amber,
+                  rangeSelectionColor: Colors.amber.withOpacity(0.2),
+                  onSelectionChanged: _onSelectionChanged,
+                  selectionMode: DateRangePickerSelectionMode.range,
+                  initialSelectedRange: PickerDateRange(
+                      DateTime.now().subtract(const Duration(days: 0)),
+                      DateTime.now().add(const Duration(days: 0))),
+                ),
               ),
             ],
           );
